@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .nav {
+            width: 250px;
+            background-color: #2c3e50;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            color: white;
+            overflow-y: auto;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav ul li {
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .nav ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 5px 0;
+            border-bottom: 1px solid #34495e;
+        }
+        .nav ul li a:hover {
+            background-color: #34495e;
+        }
+        .nav .folder > a::before {
+            content: "📂 ";
+            margin-right: 5px;
+        }
+        .nav .folder ul {
+            display: none;
+            margin-left: 15px;
+        }
+        .nav .folder.open > ul {
+            display: block;
+        }
+        .nav .folder > a::after {
+            content: "▶";
+            float: right;
+        }
+        .nav .folder.open > a::after {
+            content: "▼";
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #ecf0f1;
+        }
+        .content h1, .content h2, .content h3 {
+            color: #2c3e50;
+        }
+        .content p, .content ul {
+            color: #34495e;
+        }
+        .content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .content ul li {
+            margin-bottom: 10px;
+        }
+        .form-container, .login-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-container input, .form-container select, .form-container textarea, .form-container button,
+        .login-container input, .login-container button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-container label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul id="nav-list">
+            <li><a href="#" onclick="showContent('streamlined-resume')">Streamlined Resume</a></li>
+            <li class="folder">
+                <a href="#" onclick="toggleFolder(this)">Detailed Work Experience</a>
+                <ul>
+                    <li><a href="#" onclick="showContent('detailed-vor-specialist')">VOR Specialist</a></li>
+                    <li><a href="#" onclick="showContent('detailed-lead-cashier')">Lead Cashier</a></li>
+                    <li><a href="#" onclick="showContent('detailed-sales-specialist')">Sales Specialist</a></li>
+                    <li><a href="#" onclick="showContent('detailed-substitute-teacher')">Substitute Teacher / PE Teacher</a></li>
+                    <li><a href="#" onclick="showContent('detailed-health-tech')">School District Health Tech</a></li>
+                    <li><a href="#" onclick="showContent('detailed-police-officer')">Police Officer</a></li>
+                </ul>
+            </li>
+            <li class="folder">
+                <a href="#" onclick="toggleFolder(this)">Detailed Education</a>
+                <ul>
+                    <li><a href="#" onclick="showContent('detailed-education')">Education</a></li>
+                </ul>
+            </li>
+            <li class="folder">
+                <a href="#" onclick="toggleFolder(this)">Detailed Skills</a>
+                <ul>
+                    <li><a href="#" onclick="showContent('detailed-skills')">Skills</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="showContent('login-form')">Admin Login</a></li>
+        </ul>
+    </div>
+    <div class="content" id="content">
+        <div id="streamlined-resume">
+            <h1>Aliciana (Ali) Gondick</h1>
+            <p>10887 Winner Circle | Whitmore Lake, MI, 48189 | Gondicka@gmail.com | (734)585-4754</p>
+            <h2>Career Objectives</h2>
+            <ul>
+                <li><strong>Short-Term Goal:</strong> Pursue a Master's degree related to Artificial Intelligence and Machine Learning to deepen expertise in advanced computational techniques and data analysis.</li>
+                <li><strong>Long-Term Goal:</strong> Leverage advanced AI, machine learning, and data analysis skills to drive innovation and efficiency within a dynamic organization, contributing to cutting-edge technological advancements and sound logical structures.</li>
+            </ul>
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor’s Degree in Information Technology (Specialization in Computer Programming) (expected May, 2025)</li>
+                <li>Associate's Degree in Criminal Justice</li>
+            </ul>
+            <h2>Additional Training & Professional Development</h2>
+            <ul>
+                <li><strong>FreeCodeCamp Curriculum:</strong> Completed sections including JavaScript Data Structures and Algorithms, Responsive Web Design, and others (Summer 2022)</li>
+                <li><strong>University of Michigan OpenCourseWare:</strong> Completed several open courses across various subjects such as Linear Algebra, Calculus, and Python (May 2024)</li>
+            </ul>
+            <h2>Professional Experience</h2>
+            <ul>
+                <li><strong><a href="#" onclick="showContent('detailed-vor-specialist')">VOR Specialist</a></strong><br>
+                    Mopar (Contracted at Stellantis Production Plant for Jeeps), Toledo, Ohio<br>
+                    March 2024 – Present<br>
+                    Analyze weekly VOR requests and manage inventory logistics. Collaborate with overstock and float management teams to optimize resource use and save costs. Developed dynamic spreadsheets and automated processes for data analysis and reporting.</li>
+
+                <li><strong><a href="#" onclick="showContent('detailed-lead-cashier')">Lead Cashier</a></strong><br>
+                    Lowe's, Ann Arbor, Michigan<br>
+                    July 2023 – March 2024<br>
+                    Managed break schedules and ensured compliance with labor laws. Handled customer complaints and provided cross-departmental support.</li>
+
+                <li><strong><a href="#" onclick="showContent('detailed-sales-specialist')">Sales Specialist</a></strong><br>
+                    Lowe's, Ann Arbor, Michigan<br>
+                    July 2023 – March 2024<br>
+                    Built customer relationships and met sales goals for custom products. Coordinated with vendors, contractors, and logistics for product creation, delivery, and installation.</li>
+
+                <li><strong><a href="#" onclick="showContent('detailed-substitute-teacher')">Long-Term Substitute Teacher / PE Teacher</a></strong><br>
+                    Sleeping Giant School (PK-8), Steamboat Springs, Colorado<br>
+                    January 2022 – June 2023<br>
+                    Adapted to various teaching roles across K-8 grades. Built strong student relationships and delivered tailored lessons. Developed PE curriculum based on educational standards.</li>
+
+                <li><strong><a href="#" onclick="showContent('detailed-health-tech')">School District Health Tech</a></strong><br>
+                    Steamboat Springs School District, Steamboat Springs, Colorado<br>
+                    August 2021 – January 2022<br>
+                    Managed student health needs and monitored diabetic students. Provided health support for students with special needs.</li>
+
+                <li><strong><a href="#" onclick="showContent('detailed-police-officer')">Police Officer</a></strong><br>
+                    Steamboat Springs, Colorado<br>
+                    January 2019 – July 2021<br>
+                    Ensured community safety through regular patrols and engagement. Assisted in investigations, evidence collection, and report writing. Provided sworn testimony in court. Certified firearms instructor and armorer. Completed federal and state law enforcement training.</li>
+            </ul>
+            <h2>Skills</h2>
+            <ul>
+                <li>Analytical & Logical Problem Solver</li>
+		<li>Systems Thinking</li>
+                <li>Intrinsic Motivation</li>
+                <li>Programming Enthusiast</li>
+                <li>Outdoor Enthusiast</li>
+                <li>Data Analysis</li>
+                <li>Self-Guided Researcher</li>
+                <li>Quick Learner & Growth-Oriented</li>
+            </ul>
+        </div>
+
+        <div id="detailed-vor-specialist" style="display: none;">
+            <h2>VOR Specialist</h2>
+            <p><strong>March 2024 – Present</strong><br>
+            Mopar (Contracted at Stellantis Production Plant for Jeeps), Toledo, Ohio</p>
+            <ul>
+                <li>VOR Request Analysis: Receive and analyze weekly VOR (Vehicle Off-Road) requests, determining the feasibility of fulfilling part requests based on inventory, projected run-out times, ship times, and incoming shipments.</li>
+                <li>Inventory & Logistics Management: Evaluate logistics and inventory data to make informed decisions on part provision, ensuring optimal balance between production needs and part availability.</li>
+                <li>Overstock Team Coordination: Collaborate with the overstock team to identify and resolve overstock issues by analyzing production processes, computer systems, and adherence to industrial engineering standards.</li>
+                <li>Cross-Plant Collaboration: Communicate with other plants to assess inventory status and coordinate the transfer of excess parts, optimizing resource allocation.</li>
+                <li>Float Management & Cost Savings: Developed an advanced spreadsheet for managing stock, projected use, float quantity, and costs, incorporating interactive elements to dynamically update cost savings and charts.</li>
+                <li>Automation & Efficiency Improvements: Created macros and automated processes within spreadsheets to enhance data accuracy and streamline reporting, contributing to significant cost savings for the company.</li>
+                <li>Data Analysis & Reporting: Generate detailed reports and visualizations to support decision-making and present cost-saving strategies to management.</li>
+            </ul>
+        </div>
+
+        <div id="detailed-lead-cashier" style="display: none;">
+            <h2>Lead Cashier</h2>
+            <p><strong>July 2023 – March 2024</strong><br>
+            Lowe's, Ann Arbor, Michigan</p>
+            <ul>
+                <li>Coordination & Scheduling: Managed daily break schedules for cashiers, ensuring compliance with company policy, state law, and federal labor laws.</li>
+                <li>Customer Service Leadership: Acted as the first point of contact for customer complaints, resolving issues efficiently and maintaining high customer satisfaction.</li>
+                <li>Departmental Adaptability: Trained in various departments, providing support and filling in as needed to ensure smooth operations.</li>
+                <li>Communication & Liaison: Facilitated communication between cashiers and managers, coordinating efforts to enhance store efficiency.</li>
+            </ul>
+        </div>
+
+        <div id="detailed-sales-specialist" style="display: none;">
+            <h2>Sales Specialist</h2>
+            <p><strong>July 2023 – March 2024</strong><br>
+            Lowe's, Ann Arbor, Michigan</p>
+            <ul>
+                <li>Sales & Customer Relationships: Built strong relationships with customers, meeting sales goals through effective communication and personalized service.</li>
+                <li>Custom Orders Management: Coordinated custom orders, serving as the intermediary between customers, vendors, contractors, and logistics teams.</li>
+                <li>Vendor & Contractor Coordination: Worked closely with vendors and contractors to ensure timely and accurate delivery and installation of custom products, upholding company standards.</li>
+                <li>Logistics & Quality Control: Managed the shipping and receiving process, ensuring products met quality standards and customer expectations.</li>
+            </ul>
+        </div>
+
+        <div id="detailed-substitute-teacher" style="display: none;">
+            <h2>Long-Term Substitute Teacher / PE Teacher</h2>
+            <p><strong>January 2022 – June 2023</strong><br>
+            Sleeping Giant School (PK-8), Steamboat Springs, Colorado</p>
+            <ul>
+                <li>Flexible Teaching Support: Adapted to various grade levels and subjects based on daily needs, effectively managing classroom dynamics and ensuring continuity in education.</li>
+                <li>Student Engagement & Relationship Building: Built strong connections with students, earning their trust and respect, and often recognized as a favorite teacher.</li>
+                <li>Adaptive Teaching Strategies: Formulated teaching methods tailored to students' moods, cognitive states, and developmental stages, ensuring effective delivery of educational goals.</li>
+                <li>PE Curriculum Development: Developed and implemented lesson plans based on state and federal education standards, with a focus on age-appropriate developmental milestones.</li>
+                <li>Safety & Relatability: Prioritized student safety in all activities while maintaining high levels of student engagement and participation.</li>
+            </ul>
+        </div>
+
+        <div id="detailed-health-tech" style="display: none;">
+            <h2>School District Health Tech</h2>
+            <p><strong>August 2021 – January 2022</strong><br>
+            Steamboat Springs School District, Steamboat Springs, Colorado</p>
+            <ul>
+                <li>Student Health Monitoring & Response: Managed the health needs of students in the nurse's office, addressing various medical situations with appropriate care.</li>
+                <li>Diabetes Management: Actively monitored blood sugar levels for diabetic students, administering insulin or providing food/carbohydrates as needed to regulate blood sugar.</li>
+                <li>Special Needs Support: Provided tailored health monitoring and support for students with special needs, ensuring their health and safety during school hours.</li>
+                <li>Health Education & Communication: Educated students and staff on health practices and effectively communicated health-related information.</li>
+            </ul>
+        </div>
+
+        <div id="detailed-police-officer" style="display: none;">
+            <h2>Police Officer</h2>
+            <p><strong>January 2019 – July 2021</strong><br>
+            Steamboat Springs, Colorado</p>
+            <ul>
+                <li>Community Safety & Engagement: Conducted regular patrols to enhance community safety, built relationships with citizens, and provided assistance to other agencies as needed.</li>
+                <li>Investigation & Documentation: Participated in ongoing investigations, collected evidence, and meticulously documented findings. Produced detailed reports and provided sworn testimony in court.</li>
+                <li>Firearms Instruction & Armory Management: Served as a certified firearms instructor and armorer for Glock, rifle, and shotguns. Delivered training sessions and maintained firearms, ensuring optimal performance and safety.</li>
+                <li>Training & Adaptability: Completed federal and state law enforcement academies with specialized training in federal law, case law, and Colorado state law. Demonstrated exceptional adaptability and precision in firearms training, becoming an instructor within a year of service.</li>
+                <li>Problem-Solving & Analysis: Utilized strong problem-solving skills to dissect and address challenges, focusing attention on key areas to achieve success. Excelled in firearms performance due to attention to detail and adaptability.</li>
+                <li>Collaboration & Support: Worked collaboratively with various law enforcement agencies, providing support and expertise as required.</li>
+            </ul>
+        </div>
+
+        <div id="detailed-education" style="display: none;">
+            <h1>Detailed Education</h1>
+            <h2>Bachelor’s Degree in Information Technology (Specialization in Computer Programming)</h2>
+            <p><strong>Colroado State University System</strong><br>
+            GPA: 3.78</p>
+            <ul>
+                <li>Relevant coursework: Data Structures, Algorithms, Discrete Mathematics, Database Management</li>
+            </ul>
+            <h2>Associate's Degree in Criminal Justice</h2>
+            <p><strong>Colorado Mountain College, 2021</strong><br>
+            Graduated with honors, GPA: 3.9</p>
+            <h2>Additional Training & Professional Development</h2>
+            <h3>FreeCodeCamp Curriculum</h3>
+            <ul>
+                <li>Completed sections including JavaScript Data Structures and Algorithms, Responsive Web Design, and others (Summer 2022)</li>
+            </ul>
+           
+        </div>
+
+        <div id="detailed-skills" style="display: none;">
+            <h1>Detailed Skills</h1>
+            <h2>Analytical & Logical Problem Solver</h2>
+            <ul>
+                <li>Naturally inclined to break down complex problems into manageable components.</li>
+                <li>Evaluates and improves processes for enhanced efficiency.</li>
+            </ul>
+	    <h2>Systems Thinking</h2>
+            <ul>
+                <li>Skilled in analyzing and optimizing complex systems, understanding interdependencies, and identifying opportunities for improvement.</li>
+                
+            </ul>
+            <h2>Intrinsic Motivation</h2>
+            <ul>
+                <li>Highly driven by autonomy.</li>
+                <li>Thrives in environments where independent problem-solving and initiative are encouraged.</li>
+            </ul>
+            <h2>Programming Enthusiast</h2>
+            <ul>
+                <li>Frequently creates small programs to automate day-to-day tasks, leveraging a strong foundation in logic and problem-solving despite limited formal experience.</li>
+            </ul>
+            <h2>Outdoor Enthusiast</h2>
+            <ul>
+                <li>Enjoys challenging outdoor activities such as biking and hiking, dedicated to personal growth and continuously pushing personal limits.</li>
+            </ul>
+            <h2>Data Analysis</h2>
+            <ul>
+                <li>Passionate about analyzing data to identify patterns and make informed predictions.</li>
+            </ul>
+            <h2>Self-Guided Researcher</h2>
+            <ul>
+                <li>Dedicated to continuous learning and education, constantly engaging in self-directed educational projects.</li>
+                <li>Tailors educational plans to fit cognitive needs and learning styles, demonstrating high adaptability and self-awareness.</li>
+            </ul>
+            <h2>Quick Learner & Growth-Oriented</h2>
+            <ul>
+                <li>Quickly assimilates new information and skills, consistently seeking new opportunities for learning and personal development.</li>
+            </ul>
+        </div>
+
+        <div id="user-form" class="form-container">
+            <h2>Add New Entry</h2>
+            <form onsubmit="addEntry(event)">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+                
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="skill">Skill</option>
+                    <option value="education">Education</option>
+                    <option value="work">Work Experience</option>
+                </select>
+                
+                <label for="completion-date">Completion Date (if applicable):</label>
+                <input type="date" id="completion-date" name="completion-date">
+                
+                <button type="submit">Add Entry</button>
+            </form>
+        </div>
+
+        <div id="login-form" class="login-container">
+            <h2>Admin Login</h2>
+            <form onsubmit="login(event)">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showContent(id) {
+            const sections = document.querySelectorAll('.content > div');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function toggleFolder(element) {
+            const parent = element.parentElement;
+            parent.classList.toggle('open');
+        }
+
+        function addEntry(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            const completionDate = document.getElementById('completion-date').value;
+            
+            let entryHTML = `<h2>${title}</h2><ul><li>${description}</li>`;
+            if (completionDate) {
+                entryHTML += `<li>Completion Date: ${completionDate}</li>`;
+            }
+            entryHTML += '</ul>';
+            
+            if (category === 'skill') {
+                document.getElementById('detailed-skills').innerHTML += entryHTML;
+            } else if (category === 'education') {
+                document.getElementById('detailed-education').innerHTML += entryHTML;
+            } else if (category === 'work') {
+                const workExperienceNav = document.createElement('li');
+                workExperienceNav.innerHTML = `<a href="#" onclick="showContent('${title.replace(/\s+/g, '-').toLowerCase()}')">${title}</a>`;
+                document.querySelector('.folder > ul').appendChild(workExperienceNav);
+
+                const workExperienceDetail = document.createElement('div');
+                workExperienceDetail.id = title.replace(/\s+/g, '-').toLowerCase();
+                workExperienceDetail.style.display = 'none';
+                workExperienceDetail.innerHTML = entryHTML;
+                document.querySelector('.content').appendChild(workExperienceDetail);
+            }
+            
+            // Store in local storage
+            const entries = JSON.parse(localStorage.getItem('entries')) || [];
+            entries.push({ title, description, category, completionDate });
+            localStorage.setItem('entries', JSON.stringify(entries));
+
+            // Clear form
+            document.querySelector('.form-container form').reset();
+        }
+
+        function login(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'AG' && password === 'Tanuki1?') {
+                document.getElementById('user-form').style.display = 'block';
+                document.getElementById('login-form').style.display = 'none';
+                const addEntryLink = document.createElement('li');
+                addEntryLink.innerHTML = '<a href="#" onclick="showContent(\'user-form\')">Add New Entry</a>';
+                document.getElementById('nav-list').appendChild(addEntryLink);
+                alert('Login successful!');
+            } else {
+                alert('Invalid credentials!');
+            }
+        }
+
+        // Load entries from local storage
+        document.addEventListener('DOMContentLoaded', () => {
+            const entries = JSON.parse(localStorage.getItem('entries')) || [];
+            entries.forEach(entry => {
+                let entryHTML = `<h2>${entry.title}</h2><ul><li>${entry.description}</li>`;
+                if (entry.completionDate) {
+                    entryHTML += `<li>Completion Date: ${entry.completionDate}</li>`;
+                }
+                entryHTML += '</ul>';
+
+                if (entry.category === 'skill') {
+                    document.getElementById('detailed-skills').innerHTML += entryHTML;
+                } else if (entry.category === 'education') {
+                    document.getElementById('detailed-education').innerHTML += entryHTML;
+                } else if (entry.category === 'work') {
+                    const workExperienceNav = document.createElement('li');
+                    workExperienceNav.innerHTML = `<a href="#" onclick="showContent('${entry.title.replace(/\s+/g, '-').toLowerCase()}')">${entry.title}</a>`;
+                    document.querySelector('.folder > ul').appendChild(workExperienceNav);
+
+                    const workExperienceDetail = document.createElement('div');
+                    workExperienceDetail.id = entry.title.replace(/\s+/g, '-').toLowerCase();
+                    workExperienceDetail.style.display = 'none';
+                    workExperienceDetail.innerHTML = entryHTML;
+                    document.querySelector('.content').appendChild(workExperienceDetail);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
