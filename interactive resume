@@ -120,6 +120,7 @@
                 </ul>
             </li>
             <li><a href="#" onclick="showContent('login-form')">Admin Login</a></li>
+            <li><a href="#" onclick="showContent('github-link')">GitHub</a></li>
         </ul>
     </div>
     <div class="content" id="content">
@@ -176,7 +177,7 @@
             <h2>Skills</h2>
             <ul>
                 <li>Analytical & Logical Problem Solver</li>
-		<li>Systems Thinking</li>
+                <li>Systems Thinking</li>
                 <li>Intrinsic Motivation</li>
                 <li>Programming Enthusiast</li>
                 <li>Outdoor Enthusiast</li>
@@ -290,7 +291,7 @@
                 <li>Naturally inclined to break down complex problems into manageable components.</li>
                 <li>Evaluates and improves processes for enhanced efficiency.</li>
             </ul>
-	    <h2>Systems Thinking</h2>
+            <h2>Systems Thinking</h2>
             <ul>
                 <li>Skilled in analyzing and optimizing complex systems, understanding interdependencies, and identifying opportunities for improvement.</li>
                 
@@ -321,6 +322,11 @@
             <ul>
                 <li>Quickly assimilates new information and skills, consistently seeking new opportunities for learning and personal development.</li>
             </ul>
+        </div>
+
+        <div id="github-link" style="display: none;">
+            <h2>GitHub</h2>
+            <p><a href="https://github.com/algo447614" target="_blank">algo447614</a></p>
         </div>
 
         <div id="user-form" class="form-container">
