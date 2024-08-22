@@ -18,6 +18,7 @@
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
             color: white;
             overflow-y: auto;
+            transition: width 0.3s;
         }
         .nav ul {
             list-style-type: none;
@@ -90,16 +91,58 @@
         .form-container label {
             font-weight: bold;
         }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .nav {
+                width: 100px;
+            }
+        }
+
+        /* Collapsible NavPanel */
+        .nav.collapsed {
+            width: 0;
+            padding: 20px 0;
+            overflow: hidden;
+        }
+        .nav-toggle {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="nav">
+    <div class="nav-toggle" onclick="toggleNav()">☰</div>
+    <div class="nav" id="nav-panel">
         <ul id="nav-list">
             <li><a href="#" onclick="showContent('streamlined-resume')">Streamlined Resume</a></li>
             <li class="folder">
                 <a href="#" onclick="toggleFolder(this)">Detailed Work Experience</a>
                 <ul>
-                    <li><a href="#" onclick="showContent('detailed-vor-specialist')">VOR Specialist</a></li>
+                    <li><a href="#" onclick="showContent('detailed-mopar-specialist')">Mopar Specialist</a></li>
                     <li><a href="#" onclick="showContent('detailed-lead-cashier')">Lead Cashier</a></li>
                     <li><a href="#" onclick="showContent('detailed-sales-specialist')">Sales Specialist</a></li>
                     <li><a href="#" onclick="showContent('detailed-substitute-teacher')">Substitute Teacher / PE Teacher</a></li>
@@ -144,10 +187,10 @@
             </ul>
             <h2>Professional Experience</h2>
             <ul>
-                <li><strong><a href="#" onclick="showContent('detailed-vor-specialist')">VOR Specialist</a></strong><br>
+                <li><strong><a href="#" onclick="showContent('detailed-mopar-specialist')">Mopar Specialist</a></strong><br>
                     Mopar (Contracted at Stellantis Production Plant for Jeeps), Toledo, Ohio<br>
                     March 2024 – Present<br>
-                    Analyze weekly VOR requests and manage inventory logistics. Collaborate with overstock and float management teams to optimize resource use and save costs. Developed dynamic spreadsheets and automated processes for data analysis and reporting.</li>
+                    Developed and implemented algorithms to optimize provision quantities for backordered products, ensuring timely delivery to Mopar. Engineered dynamic Excel workbooks to automate VOR management, incorporating predictive visual outputs, automated analyst and shipping team references, and automated reporting features. Created VBA tools for inventory tracking and consolidated data into dashboards to enhance decision-making.</li>
 
                 <li><strong><a href="#" onclick="showContent('detailed-lead-cashier')">Lead Cashier</a></strong><br>
                     Lowe's, Ann Arbor, Michigan<br>
@@ -187,20 +230,34 @@
             </ul>
         </div>
 
-        <div id="detailed-vor-specialist" style="display: none;">
-            <h2>VOR Specialist</h2>
-            <p><strong>March 2024 – Present</strong><br>
-            Mopar (Contracted at Stellantis Production Plant for Jeeps), Toledo, Ohio</p>
-            <ul>
-                <li>VOR Request Analysis: Receive and analyze weekly VOR (Vehicle Off-Road) requests, determining the feasibility of fulfilling part requests based on inventory, projected run-out times, ship times, and incoming shipments.</li>
-                <li>Inventory & Logistics Management: Evaluate logistics and inventory data to make informed decisions on part provision, ensuring optimal balance between production needs and part availability.</li>
-                <li>Overstock Team Coordination: Collaborate with the overstock team to identify and resolve overstock issues by analyzing production processes, computer systems, and adherence to industrial engineering standards.</li>
-                <li>Cross-Plant Collaboration: Communicate with other plants to assess inventory status and coordinate the transfer of excess parts, optimizing resource allocation.</li>
-                <li>Float Management & Cost Savings: Developed an advanced spreadsheet for managing stock, projected use, float quantity, and costs, incorporating interactive elements to dynamically update cost savings and charts.</li>
-                <li>Automation & Efficiency Improvements: Created macros and automated processes within spreadsheets to enhance data accuracy and streamline reporting, contributing to significant cost savings for the company.</li>
-                <li>Data Analysis & Reporting: Generate detailed reports and visualizations to support decision-making and present cost-saving strategies to management.</li>
-            </ul>
-        </div>
+	<div id="detailed-mopar-specialist" style="display: none;">
+    		<h2>Mopar Specialist</h2>
+    		<p><strong>March 2024 – Present</strong><br>
+    		Mopar (Contracted at Stellantis Production Plant for Jeeps), Toledo, Ohio</p>
+    		<ul>
+        		<li>Backorder & Inventory Optimization: Developed and implemented a sophisticated algorithm to optimize provision quantities by calculating available inventory, production needs, and logistical constraints (racks, trailers, etc.). Ensures timely delivery of backordered products to Mopar.</li>
+        			<li>Automated Dynamic Workbooks: Engineered a dynamic Excel workbook to automate VOR management processes. The tool integrates transit times, daily usages, and delivery schedules to generate predictive visual outputs, including:
+            		<ul>
+                			<li>Estimated Runout Dates: Visual graphs with a built-in buffer to highlight critical delivery windows.</li>
+                			<li>Inventory Tracking: Automated charts displaying on-hand quantities and daily changes from deliveries and usage.</li>
+                			<li>Automated Analyst & Shipping Team References: Programmed deck number inputs and ship-from locations to automatically reference respective analysts and shipping contacts.</li>
+            		</ul>
+       	 	</li>
+        		<li>Automated Reporting & Communication: Designed a comprehensive report automation system that:
+            		<ul>
+                		<li>Serialized Reports: Assigns unique IDs to each report, formatted for clear visual separation.</li>
+                		<li>Comprehensive Data Tracking: Includes inputs for part numbers, quantities, and shipping details, with an auto-generated visual graph and sections for user follow-up.</li>
+                		<li>Email Automation: One-click email drafting to all relevant parties with templated details on shipments, including internal and external references.</li>
+                		<li>Export Functionality: Exports formatted reports to a Word document with precise alignment and formatting.</li>
+            		</ul>
+        		</li>
+        		<li>VBA Programming for Efficiency: Created VBA tools to streamline physical inventory counts and reporting processes, efficiently logging and documenting inventory data to enhance accuracy and speed.</li>
+        		<li>Data Organization & Dashboard Creation: Consolidated data from multiple projects into centralized dashboards with visual insights, facilitating better decision-making across the organization.</li>
+    		</ul>
+	</div>
+
+
+
 
         <div id="detailed-lead-cashier" style="display: none;">
             <h2>Lead Cashier</h2>
@@ -378,6 +435,11 @@
         function toggleFolder(element) {
             const parent = element.parentElement;
             parent.classList.toggle('open');
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('nav-panel');
+            nav.classList.toggle('collapsed');
         }
 
         function addEntry(event) {
