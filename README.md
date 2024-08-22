@@ -1,6 +1,6 @@
-Aliciana (Ali) Gondick
-10887 Winner Circle | Whitmore Lake, MI, 48189
-Gondicka@gmail.com | (734) 585-4754
+****** *******
+********* | *******, MI, *****
+******** | (7**)***-****
 
 Career Objectives
 Short-Term Goal: Pursue a Master's degree related to Artificial Intelligence and Machine Learning to deepen expertise in advanced computational techniques and data analysis.
